@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="linkedinLoaderApp">
+  <head>
+    <title>Linked-in data loader</title>
+    <link type="text/css" href="bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="style.css" rel="stylesheet" />
+  </head>
+  <body ng-controller="mainCtrl" ng-cloak>
+    <div class="container">
+      <header>
+        <h2>
+          Linkedin Data Loader
+        </h2>
+      </header>
+      <section>
+          <form ng-submit="pullUrlData()">
+            <div>
+              <div class="form-group col-md-1">
+                <label for="linkURL">URL:</label>
+              </div>
+
+              <div class="form-group col-md-9">
+                <input type="text"
+                  class="form-control"
+                  id="linkURL"
+                  placeholder="Please enter your URL here..."
+                  ng-model="config.url">
+              </div>
+
+              <div class="form-group col-md-2">
+                <button type="submit" class="btn btn-primary">
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="row" ng-show="user">
+            <div class="col-md-6">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{{ user.name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Current Organization:</td>
+                    <td>{{ user.current_org }}</td>
+                  </tr>
+                  <tr>
+                    <td>Title:</td>
+                    <td>{{ user.title }}</td>
+                  </tr>
+                  <tr>
+                    <td>Location:</td>
+                    <td>{{ user.location }}</td>
+                  </tr>
+                  <tr>
+                    <td>Skills:</td>
+                    <td>{{ user.skills.join() }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <p><img ng-src="{{user.profile_picture}}"/></p>
+            </div>
+          </div>
+      </section>
+    </div>
+  </body>
+  <script src="angular.min.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
+  <script src="ser-user.js" type="text/javascript"></script>
+  <script src="main.js" type="text/javascript"></script>
+</html>
