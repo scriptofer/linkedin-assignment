@@ -9,7 +9,6 @@ linkedinLoaderApp.controller('mainCtrl',['$scope', 'serUser',
 
     $scope.pullUrlData = function() {
       serUser.get( $scope.config.url ).then( function( resp ) {
-        console.log( resp.data );
         $scope.user = resp.data;
       });
     };
