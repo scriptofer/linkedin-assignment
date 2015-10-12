@@ -13,24 +13,40 @@
         </h2>
       </header>
       <section>
-          <form ng-submit="pullUrlData()">
+          <form ng-submit="pullUrlData()" name="urlForm">
             <div>
               <div class="form-group col-md-1">
                 <label for="linkURL">URL:</label>
               </div>
 
               <div class="form-group col-md-9">
-                <input type="text"
+                <input type="url"
                   class="form-control"
-                  id="linkURL"
+                  name="linkURL"
                   placeholder="Please enter your URL here..."
-                  ng-model="config.url">
+                  ng-model="config.url"
+                  required>
               </div>
 
               <div class="form-group col-md-2">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit"
+                    class="btn btn-primary"
+                    ng-disabled="!urlForm.linkURL.$valid">
                   Search
                 </button>
+              </div>
+            </div>
+            <div>
+              <div class="col-md-1"></div>
+
+              <div ng-messages="urlForm.linkURL.$error" class="col-md-9">
+                <div ng-message="required" class="alert alert-danger">
+                  Please enter url.
+                </div>
+
+                <div ng-message="url" class="alert alert-danger">
+                  Please enter a valid URL.
+                </div>
               </div>
             </div>
           </form>
@@ -71,6 +87,7 @@
     </div>
   </body>
   <script src="script/lib/angular.min.js" type="text/javascript"></script>
+  <script src="script/lib/angular-messages.min.js" type="text/javascript"></script>
   <script src="script/app.js" type="text/javascript"></script>
   <script src="script/ser-user.js" type="text/javascript"></script>
   <script src="script/main.js" type="text/javascript"></script>

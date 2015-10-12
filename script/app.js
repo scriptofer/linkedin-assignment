@@ -1,1 +1,1 @@
-var linkedinLoaderApp = angular.module('linkedinLoaderApp', []);
+var linkedinLoaderApp = angular.module('linkedinLoaderApp', [ 'ngMessages' ]);
